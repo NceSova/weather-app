@@ -19,17 +19,10 @@ export class GeoLocationProvider implements LocationProvider {
 }
 
 interface WeatherApiProvider {
-  locationProvider: LocationProvider;
-  getWeatherObjectPromise(): Promise<WeatherObject>;
+  getWeatherObject(location: string): Promise<WeatherObject>;
 }
 export class OpenWeatherApiProvider implements WeatherApiProvider {
-  locationProvider: LocationProvider;
-  constructor(locationProvider: LocationProvider) {
-    this.locationProvider = locationProvider;
-  }
-
-  async getWeatherObjectPromise() {
-    const location = await this.locationProvider.getLocationPromise();
+  async getWeatherObject(location: string) {
     const weatherData = await fetch(
       `http://api.weatherapi.com/v1/forecast.json?key=e48d2da8b8924f60876111321231306&q=${location}&days=3&aqi=no&alerts=no&lang=ru`,
       {mode: "cors"}
