@@ -1,12 +1,5 @@
 import "./index.css";
-
-interface WeatherObject {
-  city: string;
-  currentTemperature: number;
-  currentText: string;
-  currentIcon: string;
-  feelsLikeTemp: number;
-}
+import {WeatherObject} from "./interfaces";
 
 function getLocation() {
   return new Promise(function (resolve, reject) {
@@ -29,11 +22,5 @@ async function getWeather() {
   );
   const weatherObject = await weatherData.json();
   console.log(weatherObject);
-  return {
-    city: weatherObject.location.name,
-    currentTemperature: weatherObject.current.temp_c,
-    currentText: weatherObject.current.condition.text,
-    currentIcon: weatherObject.current.condition.icon,
-    feelsLikeTemp: weatherObject.current.feelslike_c,
-  } as WeatherObject;
+  return weatherObject as WeatherObject;
 }
