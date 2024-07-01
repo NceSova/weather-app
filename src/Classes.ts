@@ -24,7 +24,7 @@ interface WeatherApiProviderInterface {
 export class OpenWeatherApiProvider implements WeatherApiProviderInterface {
   async getWeatherObject(location: string) {
     const weatherData = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=e48d2da8b8924f60876111321231306&q=${location}&days=3&aqi=no&alerts=no&lang=ru`,
+      `https://api.weatherapi.com/v1/forecast.json?key=e48d2da8b8924f60876111321231306&q=${location}&days=3&aqi=no&alerts=no&lang=ru`,
       {mode: "cors"}
     );
     const weatherObject = await weatherData.json();
