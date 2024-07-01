@@ -103,9 +103,12 @@ export class OpenWeatherApiFormatter {
     });
     return hourObjectArray;
   }
-  getForecastHourObjectArray(day: Forecastday) {
+  getForecastHourObjectArray(day: Forecastday, UNIX_timestamp: number) {
     const hoursArray = day.hour;
-    const filteredHour = this.getHoursArray(hoursArray, new Date());
+    const filteredHour = this.getHoursArray(
+      hoursArray,
+      this.formatTimeToDate(UNIX_timestamp)
+    );
     return this.getHourObjectArray(filteredHour);
   }
 }

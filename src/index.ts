@@ -15,9 +15,20 @@ const grid = document.querySelector(".forecast-grid");
 const city = document.querySelector(".city");
 const curTemp = document.querySelector(".cur-temp");
 const logo = document.querySelector(".weather-logo") as HTMLImageElement;
+const feelslike = document.querySelector(".feelslike");
+const speed = document.querySelector(".speed");
+const chance = document.querySelector(".chance");
+const index = document.querySelector(".index");
+const search = document.querySelector(".search-box input") as HTMLInputElement;
 
 location.getLocationPromise().then((data) => {
-  //displayWeather(data);
+  displayWeather(data);
+});
+
+search.addEventListener("change", (e) => {
+  const city = search.value;
+  displayWeather(city);
+  search.value = "";
 });
 
 function displayWeather(location: string) {
@@ -28,9 +39,18 @@ function displayWeather(location: string) {
       "64x64",
       "128x128"
     )}`;
+
+    feelslike.textContent = `${weather.current.feelslike_c}°`;
+    speed.textContent = `${weather.current.wind_kph} км/ч`;
+    chance.textContent = `${weather.current.humidity}%`;
+    index.textContent = `${weather.current.uv}`;
+
     const hourObjects = weather.forecast.forecastday[0];
     const newGrid = ui.renderHourGrid(
-      formatter.getForecastHourObjectArray(hourObjects)
+      formatter.getForecastHourObjectArray(
+        hourObjects,
+        weather.location.localtime_epoch
+      )
     );
     grid.innerHTML = newGrid.innerHTML;
   });

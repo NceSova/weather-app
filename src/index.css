@@ -131,6 +131,11 @@ body {
 
 .additional-cell-title {
   font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.additional-cell {
+  padding: 8px;
 }
 
 .additional-cell-text {
