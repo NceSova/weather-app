@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+:root {
+  --color-background: #0b131e;
+  --color-primary: #202b3b;
+  --color-text-primary: #d7dadf;
+  --color-text-secondary: #8b919b;
+  --border-radius-mid: 8px;
+}
+
+body {
+  padding: 8px;
+  display: grid;
+  gap: 8px;
+  grid-template-rows: 48px 240px 176px 1fr;
+  height: 100vh;
+  background-color: var(--color-background);
+}
+
+.element {
+  width: 100%;
+  background-color: var(--color-primary);
+  padding: 4px;
+  color: var(--color-text-secondary);
+  border-radius: var(--border-radius-mid);
+}
+
+.search-box {
+  width: 100%;
+  height: 100%;
+  & input {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary);
+    border-radius: var(--border-radius-mid);
+    border: none;
+    padding-left: 4px;
+    color: var(--color-text-primary);
+    &::placeholder {
+      color: var(--color-text-primary);
+    }
+    &:focus {
+      transition: 100ms;
+      outline: 2px solid white;
+    }
+  }
+}
+
+.hero {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 5fr 3fr;
+  & .upper {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    grid-column: 1/-1;
+    padding: 8px;
+    & .city {
+      display: grid;
+      align-items: end;
+      margin-bottom: 4px;
+      font-size: 2rem;
+      color: var(--color-text-primary);
+    }
+    & .rain {
+      color: var(--color-text-secondary);
+    }
+  }
+  & .cur-temp {
+    display: grid;
+    align-items: center;
+    padding: 8px;
+    color: var(--color-text-primary);
+    grid-row: 2;
+    font-size: 5rem;
+  }
+}
+
+.forecast-container {
+  display: grid;
+  grid-template-rows: 40px 1fr;
+  & .forecast-text {
+    padding: 4px;
+  }
+  & .forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 96px);
+  }
+}
