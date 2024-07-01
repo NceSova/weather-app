@@ -86,7 +86,7 @@ export class OpenWeatherApiFormatter {
   getHour(hour: Hour) {
     return {
       time: `${this.formatTimeToDate(hour.time_epoch).getHours()}:00`,
-      icon: `http:${hour.condition.icon}`,
+      icon: `https:${hour.condition.icon}`,
       temp: `${hour.temp_c.toFixed()}°`,
     } as HourObject;
   }

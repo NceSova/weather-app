@@ -35,7 +35,7 @@ function displayWeather(location: string) {
   weatherApi.getWeatherObject(location).then((weather) => {
     city.textContent = weather.location.name;
     curTemp.textContent = `${weather.current.temp_c.toFixed()}°`;
-    logo.src = `http:${weather.current.condition.icon.replace(
+    logo.src = `https:${weather.current.condition.icon.replace(
       "64x64",
       "128x128"
     )}`;
