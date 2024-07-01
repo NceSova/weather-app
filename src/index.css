@@ -99,6 +99,14 @@ body {
   }
 }
 
+.forecast-grid {
+  white-space: nowrap;
+  position: relative;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
 .hour-container {
   display: flex;
   flex-direction: column;
@@ -108,4 +116,24 @@ body {
 .hour-temp {
   color: var(--color-text-primary);
   font-size: 1.5rem;
+}
+
+.additional-text {
+  padding: 4px;
+}
+
+.additional-grid {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.additional-cell-title {
+  font-size: 1.2rem;
+}
+
+.additional-cell-text {
+  color: var(--color-text-primary);
+  font-size: 2rem;
 }
