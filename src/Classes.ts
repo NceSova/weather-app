@@ -85,9 +85,9 @@ export class OpenWeatherApiFormatter {
   }
   getHour(hour: Hour) {
     return {
-      time: `${this.formatTimeToDate(hour.time_epoch).getHours}:00`,
+      time: `${this.formatTimeToDate(hour.time_epoch).getHours()}:00`,
       icon: `http:${hour.condition.icon}`,
-      temp: `${hour.temp_c.toFixed}°`,
+      temp: `${hour.temp_c.toFixed()}°`,
     } as HourObject;
   }
   getHoursArray(hours: Hour[], curDate: Date) {
@@ -101,9 +101,11 @@ export class OpenWeatherApiFormatter {
     hours.forEach((item) => {
       hourObjectArray.push(this.getHour(item));
     });
+    return hourObjectArray;
   }
   getForecastHourObjectArray(day: Forecastday) {
     const hoursArray = day.hour;
     const filteredHour = this.getHoursArray(hoursArray, new Date());
+    return this.getHourObjectArray(filteredHour);
   }
 }
