@@ -1,3 +1,4 @@
+import {NoEmitOnErrorsPlugin} from "webpack";
 import {Day, Forecastday, Hour, WeatherObject} from "./interfaces";
 
 interface LocationProviderInterface {
@@ -7,10 +8,18 @@ export class GeoLocationProvider implements LocationProviderInterface {
   async getLocationPromise(): Promise<string> {
     return new Promise(function (resolve, reject) {
       if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition((position) => {
-          console.log("getLocation() resolved");
-          resolve(`${position.coords.latitude},${position.coords.longitude}`);
-        });
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            console.log("getLocation() resolved");
+            console.log(
+              `${position.coords.latitude},${position.coords.longitude}`
+            );
+            resolve(`${position.coords.latitude},${position.coords.longitude}`);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
       } else {
         reject("Geolocation is not available");
       }

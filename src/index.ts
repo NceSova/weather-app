@@ -21,9 +21,14 @@ const chance = document.querySelector(".chance");
 const index = document.querySelector(".index");
 const search = document.querySelector(".search-box input") as HTMLInputElement;
 
-location.getLocationPromise().then((data) => {
-  displayWeather(data);
-});
+location
+  .getLocationPromise()
+  .then((data) => {
+    displayWeather(data);
+  })
+  .catch((error) => {
+    displayWeather("Rostov-on-Don");
+  });
 
 search.addEventListener("change", (e) => {
   const city = search.value;
